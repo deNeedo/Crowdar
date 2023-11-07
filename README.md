@@ -4,7 +4,7 @@ Mobile app that enables users to find friends in crowded places using real-time 
 ---
 
 ### App Description
-Crowder aims to simplify the process of finding friends in crowded environments such as concerts, festivals, and large gatherings. Leveraging the power of real-time GPS tracking and temporary access codes, it ensures both functionality and security. The intuitive user interface, coupled with seamless performance, provides users with an efficient tool to connect with their friends in crowded places.
+Crowdar aims to simplify the process of finding friends in crowded environments such as concerts, festivals, and large gatherings. Leveraging the power of real-time GPS tracking and temporary access codes, it ensures both functionality and security. The intuitive user interface, coupled with seamless performance, provides users with an efficient tool to connect with their friends in crowded places.
 
 ---
 
