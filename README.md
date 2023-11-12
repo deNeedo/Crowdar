@@ -34,6 +34,5 @@ Crowdar aims to simplify the process of finding friends in crowded environments 
 - Register or log in using your credentials or Google Authentication.
 - Share your location or generate a one-time code to share with friends.
 - Access your friend's location by entering their one-time code.
-- Test
 
 ---
