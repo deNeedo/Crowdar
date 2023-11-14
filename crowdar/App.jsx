@@ -1,49 +1,20 @@
-import { supabase } from './SupabaseConfig';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from './HomeScreen';
+import { LoginScreen } from './LoginScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-	const [countries, setCountries] = useState([]);
-	const fetchCountries = async () => {
-		const url = supabase.supabaseUrl + '/countries';
-		const headers = {'apikey': supabase.supabaseKey};
-		try {
-		  	const response = await fetch(url, { headers });
-		  	if (!response.ok) {
-				throw new Error('Network response was not ok');
-		  	}
-		  	const data = await response.json();
-		  	setCountries(data);
-		} catch (error) {
-		  	console.error('Fetch error:', error);
-		}
-	}
-  
-	useEffect(() => {
-		fetchCountries();
-	}, []);
-  
 	return (
-		<View style={styles.container}>
-			<FlatList
-		  		data={countries}
-		  		renderItem={({item}) => <Text style={styles.item}> {item.name} </Text>}
-		  		keyExtractor={item => item.id.toString()}
-			/>
-	  	</View>
+		<NavigationContainer>
+		<Stack.Navigator>
+			<Stack.Screen name='Home Screen' component={HomeScreen}/>
+			<Stack.Screen name='Login Screen' component={LoginScreen}/>
+			{/* <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }} /> */}
+			{/* <Stack.Screen name="Home"> {(props) => <HomeScreen {...props} extraData={someData} />} </Stack.Screen> */}
+		</Stack.Navigator>
+		</NavigationContainer>
 	);
-};
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		marginTop: 20,
-		marginLeft: 10,
-		marginRight: 10,
-	},
-	item: {
-	padding: 10,
-	fontSize: 18,
-	height: 44,
-	},
-});
+}
