@@ -1,6 +1,6 @@
 import { supabase } from './SupabaseConfig';
 import React, { useEffect, useState } from 'react';
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
 import { Styles } from './Styles';
 
 export const LoginScreen = ({navigation}) => {
@@ -38,12 +38,28 @@ export const LoginScreen = ({navigation}) => {
 
 	return (
 		<View style={Styles.Screen}>
-			<TextInput style={Styles.TextInput} placeholder='Enter your login' placeholderTextColor='#dddddd' onChangeText={setLogin} value={login}></TextInput>
-			<TextInput style={Styles.TextInput} placeholder='Enter your password' placeholderTextColor='#dddddd' onChangeText={setPassword} value={password}></TextInput>
-			<TouchableOpacity onPress={loginTry}>
+			<TextInput 
+			style={Styles.Input} 
+			placeholder='Enter your login' 
+			placeholderTextColor='#dddddd' 
+			onChangeText={setLogin} 
+			value={login}>
+			</TextInput>
+
+			<TextInput 
+			style={Styles.Input} 
+			placeholder='Enter your password' 
+			placeholderTextColor='#dddddd' 
+			onChangeText={setPassword} 
+			value={password}
+			secureTextEntry = {true}>
+			</TextInput>
+			<TouchableOpacity 
+			onPress={loginTry}>
 				<Text style={Styles.Button}> LOG IN </Text>
 			</TouchableOpacity>
-			<TouchableOpacity onPress={logoutTry}>
+			<TouchableOpacity 
+			onPress={logoutTry}>
 				<Text style={Styles.Button}> LOG OUT </Text>
 			</TouchableOpacity>
 			<Text style={status == 'LOGGED IN!' ? Styles.TextSuccess : Styles.TextError}> {status} </Text>
