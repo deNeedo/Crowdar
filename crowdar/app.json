@@ -2,7 +2,7 @@
   "expo": {
     "name": "crowdar",
     "slug": "crowdar",
-    "version": "1.0.0",
+    "version": "0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.deneedo.crowdar"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "93a32a6d-0a89-438e-b24c-63a3ea40f81d"
+      }
     }
   }
 }
