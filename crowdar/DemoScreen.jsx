@@ -7,24 +7,12 @@ export const DemoScreen = ({navigation}) => {
 	const [data, setData] = useState([]);
 	
 	const fetchCountries = async () => {
-		// const { data, error } = await supabase.from('countries').select()
-		const url = supabase.supabaseUrl + 'countries';
-		const headers = {'apikey': supabase.supabaseKey};
-		try {
-			const response = await fetch(url, {headers});
-			if (!response.ok) {
-				throw new Error('Network response was not ok!');
-			}
-			const data = await response.json();
-            setData(data);
-		} catch (error) {
-			console.error('Fetch error:', error);
-		}
+		const { data, error } = await supabase.from('countries').select()
+		if (error) {console.error('Fetch error:', error);}
+		else {setData(data);}
 	}
 
-	const clearCountries = async () => {
-		setData([]);
-	}
+	const clearCountries = async () => {setData([]);}
 
 	return (
 		<View style={Styles.Screen}>
