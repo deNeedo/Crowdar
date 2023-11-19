@@ -5,6 +5,7 @@ import { Styles } from './Styles';
 import sha256 from 'sha256';
 
 export const LoginScreen = ({navigation}) => {
+	const salt = 'CR0WD4R.4PP';
 	const [status, setStatus] = useState('NOT LOGGED IN!');
 	const [login, setLogin] = useState('');
 	const [pass, setPass] = useState('');
@@ -13,7 +14,7 @@ export const LoginScreen = ({navigation}) => {
 		const { data, error } = await supabase.from('users').select();
 		if (error) {console.error('Fetch error:', error);}
 		else {
-			let secure_pass = sha256(pass);
+			let secure_pass = sha256(salt + login + pass);
 			for (let elem of data) {
 				if (elem.username == login && elem.password == secure_pass) {setStatus('LOGGED IN!'); break;}
 				else {setStatus('WRONG LOGIN CREDENTIALS!');}
