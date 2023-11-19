@@ -12,6 +12,7 @@ export const HomeScreen = ({navigation}) => {
 			<View>
 				<ImageBackground
 					style={{
+						marginTop: 50,
 						height: height / 2.5,
 					}}
 					resizeMode='contain'
@@ -29,7 +30,8 @@ export const HomeScreen = ({navigation}) => {
 						fontSize: 30,
 						textAlign: 'center'
 					}}
-				>Crowdar - Easy way to locate friends</Text>
+				>Crowdar - Easy way to locate friends
+				</Text>
 
 				<Text
 					style={{
@@ -89,12 +91,11 @@ export const HomeScreen = ({navigation}) => {
 					>Register</Text>
 				</TouchableOpacity>
 			</View>
-			
-
-		{/* <TouchableOpacity onPress={() => navigation.navigate('Demo')}>
-				<Text style={Styles.Button}> Move to Demo Page </Text>
-			</TouchableOpacity>
-		</View> */}
 		</SafeAreaView>
 	);
 }
+
+{/* <TouchableOpacity onPress={() => navigation.navigate('Demo')}>
+		<Text style={Styles.Button}> Move to Demo Page </Text>
+	</TouchableOpacity>
+*/}
