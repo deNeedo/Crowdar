@@ -6,36 +6,31 @@ export const Styles = StyleSheet.create({
 		alignItems: 'center',
         justifyContent: 'center',
 		backgroundColor: '#212829'
-    }, 
-	Button: {
+    }, Button: {
 		elevation: 8,
 		backgroundColor: "#009688",
 		borderRadius: 10,
 		paddingVertical: 10,
-		paddingHorizontal: 12
-    }, 
-	TextError: {
+		paddingHorizontal: 12,
+		margin: 10
+    }, TextError: {
 		color: '#dd0000',
 		marginTop: 100,
 		fontSize: 20
-    }, 
-	TextSuccess: {
+    }, TextSuccess: {
 		color: '#00dd00',
 		marginTop: 100,
 		fontSize: 20
-    }, 
-	Input: {
+    }, Input: {
 		color: '#ffffff',
 		height: 60,
 		width: 300,
 		margin: 12,
 		borderWidth: 1,
 		padding: 10,
-	  },
-	TextList: {
+	}, TextList: {
 		color: '#dddddd'
-	}, 
-	List: {
+	}, List: {
 		marginTop: '20%'
 	}
 });

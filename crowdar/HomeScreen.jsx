@@ -8,6 +8,9 @@ export const HomeScreen = ({navigation}) => {
 			<TouchableOpacity onPress={() => navigation.navigate('Login')}>
 				<Text style={Styles.Button}> Move to Login Page </Text>
 			</TouchableOpacity>
+			<TouchableOpacity onPress={() => navigation.navigate('Registration')}>
+				<Text style={Styles.Button}> Move to Registration Page </Text>
+			</TouchableOpacity>
 			<TouchableOpacity onPress={() => navigation.navigate('Demo')}>
 				<Text style={Styles.Button}> Move to Demo Page </Text>
 			</TouchableOpacity>
