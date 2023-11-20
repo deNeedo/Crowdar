@@ -1,7 +1,7 @@
-import { supabase } from './SupabaseConfig';
+import { supabase } from '../supabaseClient';
 import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-import { Styles } from './Styles';
+import { Styles } from '../Styles';
 import sha256 from 'sha256';
 
 export const RegistrationScreen = ({navigation}) => {

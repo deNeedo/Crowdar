@@ -1,7 +1,7 @@
-import { supabase } from './SupabaseConfig';
+import { supabase } from '../supabaseClient';
 import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
-import { Styles } from './Styles';
+import { Styles } from '../Styles';
 
 export const DemoScreen = ({navigation}) => {
 	const [data, setData] = useState([]);
