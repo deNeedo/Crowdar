@@ -8,6 +8,7 @@ import AuthContext from './AuthContext';
 export default function Login({navigation}) {
     const { session, setSession } = useContext(AuthContext);
 
+
     //Need to fix that
 
     async function x() {
@@ -32,10 +33,12 @@ export default function Login({navigation}) {
         });
         if (error) {
             Alert.alert(error.message);
-            navigation.navigate('Welcome');}
-        else if (session)
+            navigation.navigate('Welcome');
+            console.log(session);    
+        }
+        else if (session) {
             setSession(session);
-            navigation.navigate('Account');
+            navigation.navigate('Account');}
         setLoading(false);
     }
     
