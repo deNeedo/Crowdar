@@ -4,9 +4,10 @@ import { supabase } from '../supabaseClient';
 import { Button, Input } from 'react-native-elements';
 import AuthContext from './AuthContext';
 
-
 export default function Login({navigation}) {
     const { session, setSession } = useContext(AuthContext);
+
+    console.log(session);
 
     //Need to fix that
 
@@ -15,7 +16,7 @@ export default function Login({navigation}) {
             //await Alert.prompt('Already logged in!');
             navigation.navigate('Account');}
     }
-    
+
     useEffect(() => {
         x();
     }, [])
@@ -24,17 +25,17 @@ export default function Login({navigation}) {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     
-    async function signInWithEmail() {
+    async function signUpWithEmail() {
         setLoading(true);
-        const { error, session } = await supabase.auth.signInWithPassword({
+        const { data: { session }, error, } = await supabase.auth.signUp({
             email: email,
             password: password,
         });
         if (error)
             Alert.alert(error.message);
-        else if (session)
-            setSession(session);
-            navigation.navigate('Account');
+        else if (!session)
+            await Alert.alert('Please check your inbox for email verification!');
+            navigation.navigate('Login');
         setLoading(false);
     }
     
@@ -45,8 +46,8 @@ export default function Login({navigation}) {
             <View style={styles.verticallySpaced}>
                 <Input label="Password" leftIcon={{ type: 'font-awesome', name: 'lock' }} onChangeText={(text) => setPassword(text)} value={password} secureTextEntry={true} placeholder="Password" autoCapitalize={'none'}/>
             </View>
-            <View style={[styles.verticallySpaced, styles.mt20]}>
-                <Button title="Login" disabled={loading} onPress={() => signInWithEmail()}/>
+            <View style={styles.verticallySpaced}>
+                <Button title="Register" disabled={loading} onPress={() => signUpWithEmail()}/>
             </View>
         </View>);
 }

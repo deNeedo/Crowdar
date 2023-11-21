@@ -7,7 +7,7 @@ import { Sizes } from '../constants/Sizes';
 
 const { height } = Dimensions.get("window");
 
-export const WelcomeScreen = ({navigation}) => {
+export default function Welcome({navigation}) {
 
 	return (
 		<SafeAreaView>

@@ -1,16 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { supabase } from '../supabaseClient';
 import { Alert, StyleSheet, View } from 'react-native';
 import { Button, Input } from 'react-native-elements';
-export default function Account({ session }) {
+import AuthContext from './AuthContext';
+
+export default function Account({ navigation}) {
+
+    const { session, setSession } = useContext(AuthContext);    
+    
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState('');
     const [website, setWebsite] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
+    
     useEffect(() => {
         if (session)
             getProfile();
     }, [session]);
+    
     async function getProfile() {
         try {
             setLoading(true);
@@ -39,6 +46,7 @@ export default function Account({ session }) {
             setLoading(false);
         }
     }
+    
     async function updateProfile({ username, website, avatar_url, }) {
         try {
             setLoading(true);
@@ -65,6 +73,7 @@ export default function Account({ session }) {
             setLoading(false);
         }
     }
+    
     return (<View style={styles.container}>
             <View style={[styles.verticallySpaced, styles.mt20]}>
                 <Input label="Email" value={session?.user?.email} disabled/>
@@ -81,7 +90,7 @@ export default function Account({ session }) {
             </View>
 
             <View style={styles.verticallySpaced}>
-                <Button title="Sign Out" onPress={() => supabase.auth.signOut()}/>
+                <Button title="Logout" onPress={async () => { await supabase.auth.signOut(); navigation.navigate('Login');}}/>
             </View>
         </View>);
 }
