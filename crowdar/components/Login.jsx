@@ -30,8 +30,9 @@ export default function Login({navigation}) {
             email: email,
             password: password,
         });
-        if (error)
+        if (error) {
             Alert.alert(error.message);
+            navigation.navigate('Welcome');}
         else if (session)
             setSession(session);
             navigation.navigate('Account');
