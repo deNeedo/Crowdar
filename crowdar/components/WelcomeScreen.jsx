@@ -43,7 +43,7 @@ export const WelcomeScreen = ({navigation}) => {
 						marginTop: 20,
 						fontFamily: 'Poppins_400Regular',
 					}}
-				> Your ultimate companion for staying connected at big and crowded events! 
+				> Your ultimate companion for staying connected at big and crowded events!
 				</Text>
 			</View>
 
