@@ -7,8 +7,6 @@ import AuthContext from './AuthContext';
 export default function Login({navigation}) {
     const { session, setSession } = useContext(AuthContext);
 
-    console.log(session);
-
     //Need to fix that
 
     async function x() {
@@ -33,9 +31,10 @@ export default function Login({navigation}) {
         });
         if (error)
             Alert.alert(error.message);
-        else if (!session)
+        else if (!session) {
             await Alert.alert('Please check your inbox for email verification!');
             navigation.navigate('Login');
+        }
         setLoading(false);
     }
     

@@ -26,19 +26,22 @@ export default function Login({navigation}) {
     const [loading, setLoading] = useState(false);
     
     async function signInWithEmail() {
+        
         setLoading(true);
         const { error, session } = await supabase.auth.signInWithPassword({
             email: email,
             password: password,
         });
+
+
         if (error) {
             Alert.alert(error.message);
-            navigation.navigate('Welcome');
-            console.log(session);    
+            navigation.navigate('Welcome');  
         }
         else if (session) {
             setSession(session);
-            navigation.navigate('Account');}
+            navigation.navigate('Account');
+        }
         setLoading(false);
     }
     

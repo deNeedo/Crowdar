@@ -31,11 +31,3 @@ export const AuthProvider = ({ children }) => {
 
 export default AuthContext;
 
-//     useEffect(() => {
-//         supabase.auth.getSession().then(({ data: { session } }) => {
-//             setSession(session);
-//         });
-//         supabase.auth.onAuthStateChange((_event, session) => {
-//             setSession(session);
-//         });
-//     }, []);
