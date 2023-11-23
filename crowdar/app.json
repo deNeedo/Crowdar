@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "crowdar",
+    "slug": "crowdar",
+    "version": "0.1",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "pl.crowdar"
+    },
+    "plugins": ["@react-native-google-signin/google-signin"]
+  }
+}

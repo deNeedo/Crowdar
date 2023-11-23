@@ -3,6 +3,7 @@ import { Alert, StyleSheet, View } from 'react-native';
 import { supabase } from '../supabaseClient';
 import { Button, Input } from 'react-native-elements';
 import AuthContext from './AuthContext';
+import GoogleAuth from './GoogleAuth';
 
 
 export default function Login({navigation}) {
@@ -55,6 +56,7 @@ export default function Login({navigation}) {
             <View style={[styles.verticallySpaced, styles.mt20]}>
                 <Button title="Login" disabled={loading} onPress={() => signInWithEmail()}/>
             </View>
+            <GoogleAuth/>
         </View>);
 }
 const styles = StyleSheet.create({
