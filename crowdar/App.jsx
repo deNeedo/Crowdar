@@ -9,6 +9,7 @@ import Welcome from './components/Welcome'
 import Login from './components/Login';
 import Account from './components/Account';
 import Registration from './components/Registration'
+import Location from './components/Location'
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <AuthProvider>
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{headerShown: false}}>
+                    <Stack.Screen name='Location' component={Location} />
                     <Stack.Screen name='Welcome' component={Welcome} />
                     <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Registration' component={Registration} />
