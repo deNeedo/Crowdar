@@ -17,7 +17,7 @@ const requestLocationPermission = async () => {
         },
         );
         console.log('granted', granted);
-        if (granted === 'granted') {
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         console.log('You can use Geolocation');
         return true;
         } else {
