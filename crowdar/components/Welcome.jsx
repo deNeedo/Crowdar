@@ -4,6 +4,7 @@ import { styles } from '../styles/welcomeScreenStyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '../constants/Colors';
 import { Sizes } from '../constants/Sizes';
+import { Spacing } from '../constants/Spacing';
 
 const { height } = Dimensions.get("window");
 
@@ -14,7 +15,7 @@ export default function Welcome({navigation}) {
 			<View>
 				<ImageBackground
 					style={{
-						marginTop: 50,
+						marginTop: Spacing.Small,
 						height: height / 2.5,
 					}}
 					resizeMode='contain'
@@ -23,8 +24,7 @@ export default function Welcome({navigation}) {
 			</View>
 			<View 
 				style ={{
-					paddingHorizontal: 40,
-					paddingTop: 40, 
+					paddingHorizontal: Spacing.Small,
 				}}
 			>
 				<Text
@@ -38,9 +38,9 @@ export default function Welcome({navigation}) {
 
 				<Text
 					style={{
-						fontSize: Sizes.medium,
+						fontSize: Sizes.Medium,
 						textAlign: "center",
-						marginTop: 20,
+						marginTop: Spacing.xSmall,
 						fontFamily: 'Poppins_400Regular',
 					}}
 				> Your ultimate companion for staying connected at big and crowded events!
@@ -49,8 +49,8 @@ export default function Welcome({navigation}) {
 
 			<View 
 				style={{
-					paddingHorizontal: 20,
-					paddingTop: 65,
+					paddingHorizontal: Spacing.xSmall,
+					paddingTop: Spacing.Medium,
 					flexDirection: 'row',
 					alignItems: 'center',
 				}}
@@ -58,13 +58,13 @@ export default function Welcome({navigation}) {
 				<TouchableOpacity onPress={() => navigation.navigate('Login')}
 					style={[ 
 						styles.button, 
-						{ backgroundColor: Colors.primary }	
+						{ backgroundColor: Colors.Primary }	
 					]}
 				>
 				<Text 
 					style={[
 						styles.button_text, 
-						{ color: Colors.white,
+						{ color: Colors.White,
 							fontFamily: 'Poppins_600SemiBold',
 						}
 					]}
@@ -74,13 +74,13 @@ export default function Welcome({navigation}) {
 				<TouchableOpacity onPress={() => navigation.navigate('Registration')}
 					style={[ 
 						styles.button, 
-						{ backgroundColor: Colors.white }	
+						{ backgroundColor: Colors.White }	
 					]}
 				>
 				<Text 
 					style={[
 						styles.button_text, 
-						{ color: Colors.dark,
+						{ color: Colors.Dark,
 							fontFamily: 'Poppins_600SemiBold',
 						}
 					]}

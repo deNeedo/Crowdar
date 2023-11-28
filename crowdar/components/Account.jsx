@@ -2,16 +2,30 @@ import { useState, useEffect, useContext } from 'react';
 import { supabase } from '../supabaseClient';
 import { Alert, StyleSheet, View } from 'react-native';
 import { Button, Input } from 'react-native-elements';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import AuthContext from './AuthContext';
+
 
 export default function Account({ navigation}) {
 
     const { session, setSession } = useContext(AuthContext);    
-    
+    const [user, setUser] = useState(null);
+
+
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState('');
     const [website, setWebsite] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
+
+    //Google SignOut
+    signOut = async () => {
+        try {
+          await GoogleSignin.signOut();
+          setUser(null);
+        } catch (error) {
+          console.error(error);
+        }
+      };
     
     useEffect(() => {
         if (session)
@@ -90,7 +104,7 @@ export default function Account({ navigation}) {
             </View>
 
             <View style={styles.verticallySpaced}>
-                <Button title="Logout" onPress={async () => { await supabase.auth.signOut(); navigation.navigate('Login');}}/>
+                <Button title="Logout" onPress={async () => { await supabase.auth.signOut(); await signOut(); navigation.navigate('Login');}}/>
             </View>
         </View>);
 }
