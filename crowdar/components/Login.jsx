@@ -9,13 +9,11 @@ import GoogleAuth from './GoogleAuth';
 export default function Login({navigation}) {
     const { session, setSession } = useContext(AuthContext);
 
-
     //Need to fix that
-
     async function x() {
         if (session) {
             //await Alert.prompt('Already logged in!');
-            navigation.navigate('Account');}
+            navigation.navigate('Location');}
     }
     
     useEffect(() => {
@@ -41,7 +39,7 @@ export default function Login({navigation}) {
         }
         else if (session) {
             setSession(session);
-            navigation.navigate('Account');
+            navigation.navigate('Location');
         }
         setLoading(false);
     }

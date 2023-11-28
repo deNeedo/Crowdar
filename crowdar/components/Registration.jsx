@@ -12,7 +12,7 @@ export default function Login({navigation}) {
     async function x() {
         if (session) {
             //await Alert.prompt('Already logged in!');
-            navigation.navigate('Account');}
+            navigation.navigate('Location');}
     }
 
     useEffect(() => {

@@ -26,11 +26,11 @@ export default function App() {
         <AuthProvider>
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{headerShown: false}}>
-                    <Stack.Screen name='Location' component={Location} />
                     <Stack.Screen name='Welcome' component={Welcome} />
                     <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Registration' component={Registration} />
                     <Stack.Screen name='Account' component={Account} />
+                    <Stack.Screen name='Location' component={Location} />
                 </Stack.Navigator>
             </NavigationContainer>
         </AuthProvider>
