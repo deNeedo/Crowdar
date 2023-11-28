@@ -8,7 +8,7 @@ import AuthContext from './AuthContext';
 export default function Location() {
     // state to hold location
     const { session, setSession } = useContext(AuthContext);
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState(false);
     // function to check permissions and get Location
     const getLocation = () => {
         const result = requestLocationPermission();
@@ -16,16 +16,16 @@ export default function Location() {
         console.log('res is:', res);
         if (res) {
             Geolocation.getCurrentPosition(
-            position => {
+            (position) => {
                 console.log(position);
                 setLocation(position);
             },
-            error => {
+            (error) => {
                 // See error code charts below.
                 console.log(error.code, error.message);
                 setLocation(false);
             },
-            {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+            {enableHighAccuracy: true, timeout: 30000},
             );
         }
         });
