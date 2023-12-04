@@ -9,8 +9,8 @@ export default function() {
 
     return (
         <GoogleSigninButton
-            size={GoogleSigninButton.Size.Wide}
-            color={GoogleSigninButton.Color.Dark}
+            size={GoogleSigninButton.Size.Icon}
+            color={GoogleSigninButton.Color.Light}
             onPress={async () => {
                 try {
                     await GoogleSignin.hasPlayServices();

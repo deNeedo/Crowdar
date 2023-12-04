@@ -1,13 +1,35 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, TouchableOpacity} from 'react';
 import { supabase } from '../supabaseClient';
 import MapView from 'react-native-maps';
 import { StyleSheet, View, Text, Button, PermissionsAndroid, Dimensions } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import AuthContext from './AuthContext';
 
-export default function Location() {
-    // state to hold location
+export default function Location({navigation}) {
+    
+    // chcecking if the session exists
     const { session, setSession } = useContext(AuthContext);
+    
+    useEffect(() => {
+        const checkSession = async () => {
+            if (!session) {
+                Alert.alert("User not logged in! Please login or register!");
+                navigation.navigate('Welcome');
+            }
+        };
+    
+        checkSession();
+    }, [session, navigation]);
+
+    // signout
+    const signOut = async () => {
+        await supabase.auth.signOut();
+
+        setSession(null);
+        navigation.replace('Login');
+    };
+    
+    // state to hold location
     const [location, setLocation] = useState(false);
     // function to check permissions and get Location
     const getLocation = () => {
@@ -41,6 +63,10 @@ export default function Location() {
             <View style={{marginTop: 10, padding: 10, borderRadius: 10, width: '30%'}}>
                 {location ? <MapView style={{height: height/2, width: width}} showsUserLocation={true} /> : <Text> Not sharing location! </Text>}
             </View>
+
+            {/* <TouchableOpacity onPress={signOut}>
+                <Text>Wyloguj się</Text>
+            </TouchableOpacity> */}
         </View>
     );
 };

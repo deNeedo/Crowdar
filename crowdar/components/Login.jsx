@@ -15,16 +15,15 @@ import { SafeAreaFrameContext, SafeAreaView } from 'react-native-safe-area-conte
 export default function Login({navigation}) {
     const { session, setSession } = useContext(AuthContext);
 
-    //Need to fix that
-    async function x() {
-        if (session) {
-            //await Alert.prompt('Already logged in!');
-            navigation.navigate('Location');}
-    }
-    
     useEffect(() => {
-        x();
-    }, [])
+        const checkSession = async () => {
+            if (session) {
+                navigation.navigate('Location');
+            }
+        };
+    
+        checkSession();
+    }, [session, navigation]);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -173,6 +172,4 @@ export default function Login({navigation}) {
                     </View>
             </View>
         </SafeAreaView>
-
-
 )}
