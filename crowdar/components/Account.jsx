@@ -20,12 +20,12 @@ export default function Account({ navigation}) {
     //Google SignOut
     signOut = async () => {
         try {
-          await GoogleSignin.signOut();
-          setUser(null);
+        await GoogleSignin.signOut();
+        setUser(null);
         } catch (error) {
-          console.error(error);
+        console.error(error);
         }
-      };
+    };
     
     useEffect(() => {
         if (session)

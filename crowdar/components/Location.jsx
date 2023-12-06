@@ -64,9 +64,9 @@ export default function Location({navigation}) {
                 {location ? <MapView style={{height: height/2, width: width}} showsUserLocation={true} /> : <Text> Not sharing location! </Text>}
             </View>
 
-            {/* <TouchableOpacity onPress={signOut}>
-                <Text>Wyloguj się</Text>
-            </TouchableOpacity> */}
+            <View>
+                <Button title="Log Out" onPress={signOut}></Button>
+            </View>
         </View>
     );
 };

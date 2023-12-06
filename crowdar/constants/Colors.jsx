@@ -6,4 +6,5 @@ export const Colors = {
     Primary: '#3e4c57',
     Secondary: '',
     Background: '',
+    Error: '#FF3333'
 }

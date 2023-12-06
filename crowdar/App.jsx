@@ -1,5 +1,6 @@
 import 'react-native-url-polyfill/auto';
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -25,6 +26,9 @@ export default function App() {
 	return (
         <AuthProvider>
             <NavigationContainer>
+                <>
+                    <StatusBar hidden={false} barStyle="dark-content" />
+                </>
                 <Stack.Navigator screenOptions={{headerShown: false}}>
                     <Stack.Screen name='Welcome' component={Welcome} />
                     <Stack.Screen name='Login' component={Login} />
