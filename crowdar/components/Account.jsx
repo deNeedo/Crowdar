@@ -8,7 +8,7 @@ import AuthContext from './AuthContext';
 
 export default function Account({ navigation}) {
 
-    const { session, setSession } = useContext(AuthContext);    
+    const {session, setSession} = useContext(AuthContext);    
     const [user, setUser] = useState(null);
 
 

@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthProvider } from './components/AuthContext';
 
-import Welcome from './components/Welcome'
+import Home from './components/Home'
 import Login from './components/Login';
 import Account from './components/Account';
 import Registration from './components/Registration'
@@ -30,7 +30,7 @@ export default function App() {
                     <StatusBar hidden={false} barStyle="dark-content" />
                 </>
                 <Stack.Navigator screenOptions={{headerShown: false}}>
-                    <Stack.Screen name='Welcome' component={Welcome} />
+                    <Stack.Screen name='Home' component={Home} />
                     <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Registration' component={Registration} />
                     <Stack.Screen name='Account' component={Account} />

@@ -5,7 +5,7 @@ import { Button, Input, colors } from 'react-native-elements';
 import AuthContext from './AuthContext';
 import GoogleAuth from './GoogleAuth';
 
-import { styles } from '../styles/loginScreenStyle';
+import { Styles } from '../styles/loginScreenStyle';
 import { Colors } from '../constants/Colors';
 import { Sizes } from '../constants/Sizes';
 import { Spacing } from '../constants/Spacing';
@@ -13,12 +13,12 @@ import { SafeAreaFrameContext, SafeAreaView } from 'react-native-safe-area-conte
 
 
 export default function Login({navigation}) {
-    const { session, setSession } = useContext(AuthContext);
+    const {session, setSession} = useContext(AuthContext);
 
     useEffect(() => {
         const checkSession = async () => {
             if (session) {
-                navigation.navigate('Location');
+                navigation.navigate('Home');
             }
         };
     
@@ -39,12 +39,11 @@ export default function Login({navigation}) {
 
 
         if (error) {
-            Alert.alert(error.message);
-            navigation.navigate('Welcome');  
+            Alert.alert(error.message);  
         }
         else if (session) {
             setSession(session);
-            navigation.navigate('Location');
+            navigation.navigate('Home');
         }
         setLoading(false);
     }

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const Styles = StyleSheet.create({
     button: {
         paddingVertical: 15,
         paddingHorizontal: 20,

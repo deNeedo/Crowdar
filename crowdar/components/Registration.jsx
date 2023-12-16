@@ -6,7 +6,7 @@ import AuthContext from './AuthContext';
 import GoogleAuth from './GoogleAuth';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { styles } from '../styles/registrationScreenStyle';
+import { Styles } from '../styles/registrationScreenStyle';
 import { Colors } from '../constants/Colors';
 import { Sizes } from '../constants/Sizes';
 import { Spacing } from '../constants/Spacing';
@@ -18,7 +18,7 @@ export default function Login({navigation}) {
     useEffect(() => {
         const checkSession = async () => {
             if (session) {
-                navigation.navigate('Location');
+                navigation.navigate('Home');
             }
         };
     
@@ -86,7 +86,7 @@ export default function Login({navigation}) {
         if (error)
             Alert.alert(error.message);
         else if (!session) {
-            await Alert.alert('Please check your inbox for email verification!');
+            Alert.alert('Please check your inbox for email verification!');
             navigation.navigate('Login');
         }
         setLoading(false);

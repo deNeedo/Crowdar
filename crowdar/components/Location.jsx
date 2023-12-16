@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext, TouchableOpacity} from 'react';
 import { supabase } from '../supabaseClient';
 import MapView from 'react-native-maps';
-import { StyleSheet, View, Text, Button, PermissionsAndroid, Dimensions } from 'react-native';
+import { Alert, StyleSheet, View, Text, Button, PermissionsAndroid, Dimensions } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import AuthContext from './AuthContext';
 
@@ -14,7 +14,7 @@ export default function Location({navigation}) {
         const checkSession = async () => {
             if (!session) {
                 Alert.alert("User not logged in! Please login or register!");
-                navigation.navigate('Welcome');
+                navigation.navigate('Home');
             }
         };
     
@@ -26,7 +26,7 @@ export default function Location({navigation}) {
         await supabase.auth.signOut();
 
         setSession(null);
-        navigation.replace('Login');
+        navigation.navigate('Login');
     };
     
     // state to hold location
@@ -35,16 +35,12 @@ export default function Location({navigation}) {
     const getLocation = () => {
         const result = requestLocationPermission();
         result.then(res => {
-        console.log('res is:', res);
         if (res) {
             Geolocation.getCurrentPosition(
             (position) => {
-                console.log(position);
                 setLocation(position);
             },
             (error) => {
-                // See error code charts below.
-                console.log(error.code, error.message);
                 setLocation(false);
             },
             {enableHighAccuracy: true, timeout: 30000},
@@ -83,13 +79,11 @@ const requestLocationPermission = async () => {
             buttonPositive: 'OK',
         },
         );
-        console.log('granted', granted);
+       
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('You can use Geolocation');
-        return true;
+            return true;
         } else {
-        console.log('You cannot use Geolocation');
-        return false;
+            return false;
         }
     } catch (err) {
         return false;
