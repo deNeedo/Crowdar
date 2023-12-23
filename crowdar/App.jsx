@@ -6,11 +6,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthProvider } from './components/AuthContext';
 
-import Home from './components/Home'
+import Home from './components/Home';
 import Login from './components/Login';
+import Registration from './components/Registration';
+import Location from './components/Location';
+import NotificationArea from './components/NotificationArea';
+import Settings from './components/Settings';
 import Account from './components/Account';
-import Registration from './components/Registration'
-import Location from './components/Location'
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -33,8 +35,12 @@ export default function App() {
                     <Stack.Screen name='Home' component={Home} />
                     <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Registration' component={Registration} />
-                    <Stack.Screen name='Account' component={Account} />
                     <Stack.Screen name='Location' component={Location} />
+                    <Stack.Screen name='NotificationArea' component={NotificationArea} />
+                    <Stack.Screen name='Settings' component={Settings} />
+                    <Stack.Screen name='Account' component={Account} />
+                    
+                    
                 </Stack.Navigator>
             </NavigationContainer>
         </AuthProvider>

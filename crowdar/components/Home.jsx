@@ -3,7 +3,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { View, TouchableOpacity, Text, ImageBackground, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // connection and authentication
-import { supabase } from '../supabaseClient';
 import AuthContext from './AuthContext';
 // styling
 import { Styles } from '../styles/welcomeScreenStyle';
@@ -11,17 +10,17 @@ import { Colors } from '../constants/Colors';
 import { Sizes } from '../constants/Sizes';
 import { Spacing } from '../constants/Spacing';
 
-const {height, width} = Dimensions.get("window");
+const { height, width } = Dimensions.get("window");
 
 export default function Home({navigation}) {
 	const {session, setSession} = useContext(AuthContext)
 
-    const signOut = async () => {
-        await supabase.auth.signOut();
-        setSession(null);
-		navigation.navigate('Login');
-    };
-	
+	// const fetchFriends = async() => {
+	// 	const { data, error } = await supabase.from('').select();
+	// 	if (error) {return null;}
+	// 	else {return data;}
+	// }
+
 	return (
 		!session ? (
 			<SafeAreaView>
@@ -43,18 +42,13 @@ export default function Home({navigation}) {
 			</SafeAreaView>) : (
 			<SafeAreaView>
 				<View>
-					<TouchableOpacity style={Styles.button} onPress={signOut}>
-						<Text> LOG OUT </Text>
+					<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('NotificationArea')}>
+						<Text> Notifications </Text>
 					</TouchableOpacity>
 				</View>
 				<View>
-					<TouchableOpacity style={Styles.button} onPress={signOut}>
-						<Text> LOG OUT </Text>
-					</TouchableOpacity>
-				</View>
-				<View>
-					<TouchableOpacity style={Styles.button} onPress={signOut}>
-						<Text> LOG OUT </Text>
+					<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Settings')}>
+						<Text> Settings </Text>
 					</TouchableOpacity>
 				</View>
 			</SafeAreaView>)
