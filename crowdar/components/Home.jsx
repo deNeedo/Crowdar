@@ -1,7 +1,7 @@
 // react main features
 import React, { useState, useContext, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-import { View, TouchableOpacity, Text, ImageBackground, Dimensions } from 'react-native';
+import { View, TouchableOpacity, Text, ImageBackground, Dimensions, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // connection and authentication
 import AuthContext from './AuthContext';
@@ -14,18 +14,13 @@ import { Spacing } from '../constants/Spacing';
 const { height, width } = Dimensions.get("window");
 
 export default function Home({navigation}) {
-	const {session, setSession} = useContext(AuthContext)
-	const {friends, setFriends} = useState([])
+	const {session, setSession} = useContext(AuthContext); 
+	const [ friends, setFriends ] = useState([]);
 
-	const createList = () => {
-		const elements = friends.map(person =><li>{person}</li>)
-		return <ul>{elements}</ul>;
-	}
+	useEffect(() => {console.log(friends)}, [friends])
 
-	const fetchFriends = async() => {
+	const fetchFriends = async () => {
 		const { data, error } = await supabase.from('profiles').select('friends').eq('id', session.user.id);
-		console.log(friends)
-		console.log(data[0].friends)
 		if (error) {setFriends([]);}
 		else {setFriends(data[0].friends);}
 	}
@@ -61,15 +56,30 @@ export default function Home({navigation}) {
 					</TouchableOpacity>
 				</View>
 				<View>
-					<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Location')}>
-						<Text> Location </Text>
-					</TouchableOpacity>
-				</View>
-				<View>
 					<TouchableOpacity style={Styles.button} onPress={fetchFriends}>
 						<Text> GetFriends </Text>
 					</TouchableOpacity>
-					{/* {friends && createList} */}
+
+					{/* <View style={styles.container}>
+					{friends ? friends.map((friend, id) => {
+						
+						return (
+							<View key={id}>
+								<Text>{friend}</Text>
+							</View>
+						);
+					}) : undefined}
+					</View> */}
+					<FlatList
+						data={friends}
+						renderItem={(friend) => {
+							return (
+								<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Location')}>
+									<Text>{friend.item}</Text>
+								</TouchableOpacity>
+							)
+						}}
+					/>
 				</View>
 			</SafeAreaView>)
 	);
