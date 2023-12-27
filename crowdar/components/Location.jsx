@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useContext, TouchableOpacity} from 'react';
+import React, { useState, useEffect, useContext, TouchableOpacity } from 'react';
 import { supabase } from '../supabaseClient';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { Alert, StyleSheet, View, Text, Button, PermissionsAndroid, Dimensions } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import AuthContext from './AuthContext';
@@ -17,7 +17,6 @@ export default function Location({navigation}) {
                 navigation.navigate('Home');
             }
         };
-    
         checkSession();
     }, [session, navigation]);
 
@@ -37,19 +36,20 @@ export default function Location({navigation}) {
         result.then(res => {
         if (res) {
             Geolocation.getCurrentPosition(
-            (position) => {
-                setLocation(position);
-            },
-            (error) => {
-                setLocation(false);
-            },
-            {enableHighAccuracy: true, timeout: 30000},
+                async (position) => {
+                    // const {data, error} = await supabase.from('profiles').select('location').eq('id', session.user.id);
+                    // console.log(data[0].location.latitude)
+                    setLocation(position);
+                    await supabase.from('profiles').update({location: position.coords}).eq('id', session.user.id);
+                },
+                (error) => {setLocation(false)},
+                {enableHighAccuracy: true, timeout: 30000},
             );
         }
         });
     };
     return (
-        <View /*style={styles.container}*/   style={{marginTop: 50, height: height / 2.5}} resizeMode='contain'>
+        <View /*style={styles.container}*/ style={{marginTop: 50, height: height / 2.5}} resizeMode='contain'>
             <Text>Welcome!</Text>
             <View style={{marginTop: 10, padding: 10, borderRadius: 10, width: '30%'}}>
                 <Button title="Get Location" onPress={getLocation} />
@@ -57,11 +57,14 @@ export default function Location({navigation}) {
             <Text> Latitude: {location ? location.coords.latitude : null} </Text>
             <Text> Longitude: {location ? location.coords.longitude : null} </Text>
             <View style={{marginTop: 10, padding: 10, borderRadius: 10, width: '30%'}}>
-                {location ? <MapView style={{height: height/2, width: width}} showsUserLocation={true} /> : <Text> Not sharing location! </Text>}
+                {location ?
+                <MapView style={{height: height / 2, width: width}} showsUserLocation={true}>
+                    <Marker coordinate={{latitude: location.coords.latitude, longitude: location.coords.longitude}}/>
+                </MapView> : <Text> Not sharing location! </Text>}
             </View>
 
             <View>
-                <Button title="Log Out" onPress={signOut}></Button>
+                <Button title="Log Out" onPress={signOut}> </Button>
             </View>
         </View>
     );
