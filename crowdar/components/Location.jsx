@@ -5,11 +5,15 @@ import { Alert, StyleSheet, View, Text, Button, PermissionsAndroid, Dimensions }
 import Geolocation from 'react-native-geolocation-service';
 import AuthContext from './AuthContext';
 
-export default function Location({navigation}) {
+export default function Location({route, navigation}) {
     
     // chcecking if the session exists
     const { session, setSession } = useContext(AuthContext);
-    
+    const [ location, setLocation] = useState(null);
+    const { userId } = route.params;
+
+    useEffect(() => {console.log(location)}, [location]);
+
     useEffect(() => {
         const checkSession = async () => {
             if (!session) {
@@ -29,7 +33,7 @@ export default function Location({navigation}) {
     };
     
     // state to hold location
-    const [location, setLocation] = useState(false);
+    // const [location, setLocation] = useState(false);
     // function to check permissions and get Location
     const getLocation = () => {
         const result = requestLocationPermission();
@@ -37,13 +41,14 @@ export default function Location({navigation}) {
         if (res) {
             Geolocation.getCurrentPosition(
                 async (position) => {
-                    // const {data, error} = await supabase.from('profiles').select('location').eq('id', session.user.id);
-                    // console.log(data[0].location.latitude)
-                    setLocation(position);
+                    // console.log(position)
+                    const {data} = await supabase.from('profiles').select('location').eq('id', userId);
+                    if (data[0].location == null) {setLocation(null);}
+                    else {setLocation(data[0].location);}
                     await supabase.from('profiles').update({location: position.coords}).eq('id', session.user.id);
                 },
-                (error) => {setLocation(false)},
-                {enableHighAccuracy: true, timeout: 30000},
+                (error) => {setLocation(null);},
+                {enableHighAccuracy: true, timeout: 30000}
             );
         }
         });
@@ -54,15 +59,15 @@ export default function Location({navigation}) {
             <View style={{marginTop: 10, padding: 10, borderRadius: 10, width: '30%'}}>
                 <Button title="Get Location" onPress={getLocation} />
             </View>
-            <Text> Latitude: {location ? location.coords.latitude : null} </Text>
-            <Text> Longitude: {location ? location.coords.longitude : null} </Text>
+            <Text> Latitude: {location ? location.latitude : null} </Text>
+            <Text> Longitude: {location ? location.longitude : null} </Text>
             <View style={{marginTop: 10, padding: 10, borderRadius: 10, width: '30%'}}>
                 {location ?
-                <MapView style={{height: height / 2, width: width}} showsUserLocation={true}>
-                    <Marker coordinate={{latitude: location.coords.latitude, longitude: location.coords.longitude}}/>
-                </MapView> : <Text> Not sharing location! </Text>}
+                    <MapView style={{height: height / 2, width: width}} showsUserLocation={true}>
+                        <Marker coordinate={{latitude: location.latitude, longitude: location.longitude}}/>
+                    </MapView> : <Text> Friend is not sharing their location! </Text>
+                }
             </View>
-
             <View>
                 <Button title="Log Out" onPress={signOut}> </Button>
             </View>

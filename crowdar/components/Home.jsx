@@ -17,7 +17,7 @@ export default function Home({navigation}) {
 	const {session, setSession} = useContext(AuthContext); 
 	const [ friends, setFriends ] = useState([]);
 
-	useEffect(() => {console.log(friends)}, [friends])
+	// useEffect(() => {console.log(friends)}, [friends])
 
 	const fetchFriends = async () => {
 		const { data, error } = await supabase.from('profiles').select('friends').eq('id', session.user.id);
@@ -74,8 +74,8 @@ export default function Home({navigation}) {
 						data={friends}
 						renderItem={(friend) => {
 							return (
-								<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Location')}>
-									<Text>{friend.item}</Text>
+								<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Location', {userId: friend.item})}>
+									<Text> {friend.item} </Text>
 								</TouchableOpacity>
 							)
 						}}
