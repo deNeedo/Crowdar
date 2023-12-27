@@ -41,11 +41,10 @@ export default function Location({route, navigation}) {
         if (res) {
             Geolocation.getCurrentPosition(
                 async (position) => {
-                    // console.log(position)
+                    await supabase.from('profiles').update({location: position.coords}).eq('id', session.user.id);
                     const {data} = await supabase.from('profiles').select('location').eq('id', userId);
                     if (data[0].location == null) {setLocation(null);}
                     else {setLocation(data[0].location);}
-                    await supabase.from('profiles').update({location: position.coords}).eq('id', session.user.id);
                 },
                 (error) => {setLocation(null);},
                 {enableHighAccuracy: true, timeout: 30000}
