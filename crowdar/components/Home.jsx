@@ -52,8 +52,6 @@ export default function Home({navigation}) {
 			setUsers([]);
 		} else {
 			const filteredUsers = data.filter(user => user.username != myUsername).map(user => user.username);
-
-			console.log(filteredUsers);
 	
 			setUsers(filteredUsers);
 		}
