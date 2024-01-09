@@ -61,7 +61,7 @@ export default function Login({navigation}) {
                         color: Colors.Primary,
                         fontFamily: 'Poppins_600SemiBold',
                         marginVertical: Spacing.xSmall,
-                     }}>
+                    }}>
                         Login Here
                     </Text>
                     
