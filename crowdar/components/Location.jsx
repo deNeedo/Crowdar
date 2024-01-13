@@ -12,7 +12,7 @@ export default function Location({route, navigation}) {
     const [ location, setLocation] = useState(null);
     const { userId } = route.params;
 
-    useEffect(() => {console.log(location)}, [location]);
+    // useEffect(() => {console.log(location)}, [location]);
 
     useEffect(() => {
         const checkSession = async () => {
@@ -31,26 +31,34 @@ export default function Location({route, navigation}) {
         setSession(null);
         navigation.navigate('Login');
     };
+
+    const checkUsername = async () => {
+        
+    }
     
     // state to hold location
     // const [location, setLocation] = useState(false);
     // function to check permissions and get Location
-    const getLocation = () => {
-        const result = requestLocationPermission();
-        result.then(res => {
-        if (res) {
-            Geolocation.getCurrentPosition(
-                async (position) => {
-                    await supabase.from('profiles').update({location: position.coords}).eq('id', session.user.id);
-                    const {data} = await supabase.from('profiles').select('location').eq('id', userId);
-                    if (data[0].location == null) {setLocation(null);}
-                    else {setLocation(data[0].location);}
-                },
-                (error) => {setLocation(null);},
-                {enableHighAccuracy: true, timeout: 30000}
-            );
+    const getLocation = async () => {
+        const {data} = await supabase.from('profiles').select('username').eq('id', session.user.id);
+        if (data[0].username == null) {Alert.alert("Please specify username in user panel before using the location feature!");}
+        else {
+            const result = requestLocationPermission();
+            result.then(res => {
+            if (res) {
+                Geolocation.getCurrentPosition(
+                    async (position) => {
+                        await supabase.from('profiles').update({location: position.coords}).eq('id', session.user.id);
+                        const {data} = await supabase.from('profiles').select('location').eq('id', userId);
+                        if (data[0].location == null) {setLocation(null);}
+                        else {setLocation(data[0].location);}
+                    },
+                    (error) => {setLocation(null);},
+                    {enableHighAccuracy: true, timeout: 30000}
+                );
+            }
+            });
         }
-        });
     };
     return (
         <View /*style={styles.container}*/ style={{marginTop: 50, height: height / 2.5}} resizeMode='contain'>
