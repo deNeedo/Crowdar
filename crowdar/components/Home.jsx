@@ -1,7 +1,7 @@
 // react main features
 import React, { useState, useContext, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
-import { View, TouchableOpacity, Text, ImageBackground, Dimensions, FlatList, TextInput } from 'react-native';
+import { Alert, View, TouchableOpacity, Text, ImageBackground, Dimensions, FlatList, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // connection and authentication
 import AuthContext from './AuthContext';
@@ -25,6 +25,18 @@ export default function Home({navigation}) {
 
 	//////////SEARCH BAR///////////
 	const [ users, setUsers ] = useState([]);
+
+	const addFriend = async (username) => {
+		const { data } = await supabase.from('profiles').select('friends').eq('id', session.user.id)
+		let temp_arr = []; let action = true;
+		if (data[0].friends != null) {temp_arr = [...data[0].friends];} 
+		temp_arr.forEach((friend) => {console.log(friend); if (username == friend) {action = false}})
+		if (action) {
+			temp_arr.push(username);
+			await supabase.from('profiles').update({friends: temp_arr}).eq('id', session.user.id)
+		}
+		else {Alert.alert("User already on your friend list");}
+	}
 
 	const fetchUsers = async (query) => {
 		const { data: myData, error: myError } = await supabase
@@ -96,7 +108,7 @@ export default function Home({navigation}) {
 						data={users}
 						renderItem={(user) => {
 							return (
-								<TouchableOpacity style={Styles.button}>
+								<TouchableOpacity style={Styles.button} onPress={() => {addFriend(user.item)}}>
 									<Text> {user.item} </Text>
 								</TouchableOpacity>
 							)

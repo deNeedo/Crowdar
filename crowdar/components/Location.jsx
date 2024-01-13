@@ -45,7 +45,7 @@ export default function Location({route, navigation}) {
                 Geolocation.getCurrentPosition(
                     async (position) => {
                         await supabase.from('profiles').update({location: position.coords}).eq('id', session.user.id);
-                        const {data} = await supabase.from('profiles').select('location').eq('id', userId);
+                        const {data} = await supabase.from('profiles').select('location').eq('username', userId);
                         if (data[0].location == null) {setLocation(null);}
                         else {setLocation(data[0].location);}
                     },

@@ -7,14 +7,14 @@ const { height, width } = Dimensions.get("window");
 
 export const Styles = StyleSheet.create({
     button: {
-        paddingVertical: 15,
+        paddingVertical: 10,
         paddingHorizontal: 20,
         width: '45%',
         borderRadius: 10,
         margin: 10,
         padding: Spacing.xSmall,
         backgroundColor: Colors.Primary,
-        marginVertical: Spacing.Small,
+        marginVertical: Spacing.xSmall,
         shadowColor: Colors.Primary,
         shadowOffset: {
             width: 0,

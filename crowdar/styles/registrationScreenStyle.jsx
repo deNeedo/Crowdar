@@ -18,9 +18,9 @@ export const Styles = StyleSheet.create({
 
     text_style: {
         fontFamily: 'Poppins_600SemiBold',
-                            color: Colors.White,
-                            textTransform: 'uppercase',
-                            textAlign: 'center',
-                            fontSize: Sizes.Medium,
+        color: Colors.White,
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        fontSize: Sizes.Medium,
     }
 })
