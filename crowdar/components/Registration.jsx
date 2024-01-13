@@ -14,7 +14,6 @@ import { SafeAreaFrameContext, SafeAreaView } from 'react-native-safe-area-conte
 
 export default function Login({navigation}) {
     const { session, setSession } = useContext(AuthContext);
-
     useEffect(() => {
         const checkSession = async () => {
             if (session) {
@@ -238,11 +237,10 @@ export default function Login({navigation}) {
                         
                     </View>
 
-                    <TouchableOpacity disabled={loading || checkValidEmail || passwordError !== "" || confirmPasswordError !== ""}  onPress={signUpWithEmail} style = {{
+                    <TouchableOpacity disabled={loading || checkValidEmail || passwordError !== "" || confirmPasswordError !== ""}  onPress={signUpWithEmail} style = {[Styles.button,{
                         padding: Spacing.xSmall,
                         backgroundColor: Colors.Primary,
                         marginVertical: Spacing.Small,
-                        borderRadius: 10,
                         shadowColor: Colors.Primary,
                         shadowOffset: {
                             width: 0,
@@ -251,14 +249,8 @@ export default function Login({navigation}) {
                         shadowOpacity: 0.3,
                         shadowRadius: 10,
 
-                    }}>
-                        <Text style ={{
-                            fontFamily: 'Poppins_600SemiBold',
-                            color: Colors.White,
-                            textTransform: 'uppercase',
-                            textAlign: 'center',
-                            fontSize: Sizes.Medium,
-                        }}>
+                    }]}>
+                        <Text style ={Styles.text_style}>
                             Register
                         </Text>
                     </TouchableOpacity>
@@ -266,12 +258,7 @@ export default function Login({navigation}) {
                     <TouchableOpacity onPress={() => navigation.navigate('Login')} style = {{
                         padding: Spacing.xSmall,
                     }}>
-                        <Text style ={{
-                            fontFamily: 'Poppins_600SemiBold',
-                            color: Colors.Dark,
-                            textAlign: 'center',
-                            fontSize: Sizes.Medium,
-                        }}>
+                        <Text style ={Styles.text_style}>
                             Already have an account
                         </Text>
                     </TouchableOpacity>

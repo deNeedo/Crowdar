@@ -62,11 +62,11 @@ export default function Home({navigation}) {
 		!session ? (
 			<SafeAreaView>
 				<View>
-					<ImageBackground style={{marginTop: Spacing.Small, height: height / 2.5}} resizeMode='contain' source={require("../assets/images/welcome_img.png")}/>
+					<ImageBackground style={[Styles.image_background, {marginTop: Spacing.Small}]} resizeMode='contain' source={require("../assets/images/welcome_img.png")}/>
 				</View>
 				<View style ={{paddingHorizontal: Spacing.Small,}}>
 					<Text style ={{fontSize: Sizes.xLarge, textAlign: 'center', fontFamily: 'Poppins_600SemiBold'}}> Crowdar - Easy way to locate friends </Text>
-					<Text style={{fontSize: Sizes.Medium, textAlign: "center", marginTop: Spacing.xSmall, fontFamily: 'Poppins_400Regular'}}> Your ultimate companion for staying connected at big and crowded events! </Text>
+					<Text style={{fontSize: Sizes.Medium, textAlign: "center", marginTop: Spacing.xSmall, marginBottom: Spacing.xLarge, fontFamily: 'Poppins_400Regular'}}> Your ultimate companion for staying connected at big and crowded events! </Text>
 				</View>
 				<View style={{paddingHorizontal: Spacing.xSmall, paddingTop: Spacing.Medium, flexDirection: 'row', alignItems: 'center'}}>
 					<TouchableOpacity onPress={() => navigation.navigate('Login')} style={[Styles.button, {backgroundColor: Colors.Primary}]}>
@@ -107,18 +107,18 @@ export default function Home({navigation}) {
 				{/* ##########END OF SEARCH BAR########## */}
 				<View>
 					<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('NotificationArea')}>
-						<Text> Notifications </Text>
+						<Text style = {Styles.text_style}> Notifications </Text>
 					</TouchableOpacity>
 				</View>
 				<View>
 					<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Settings')}>
-						<Text> Settings </Text>
+						<Text style = {Styles.text_style}> Settings </Text>
 					</TouchableOpacity>
 				</View>
 
 				<View>
 					<TouchableOpacity style={Styles.button} onPress={fetchFriends}>
-						<Text> GetFriends </Text>
+						<Text style = {Styles.text_style}> GetFriends </Text>
 					</TouchableOpacity>
 
 					<FlatList
