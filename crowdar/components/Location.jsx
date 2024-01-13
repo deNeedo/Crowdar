@@ -31,10 +31,6 @@ export default function Location({route, navigation}) {
         setSession(null);
         navigation.navigate('Login');
     };
-
-    const checkUsername = async () => {
-        
-    }
     
     // state to hold location
     // const [location, setLocation] = useState(false);
