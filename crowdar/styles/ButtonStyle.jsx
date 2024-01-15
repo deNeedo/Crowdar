@@ -29,5 +29,22 @@ export const Buttons = StyleSheet.create({
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: Sizes.Medium,
+    },
+
+    friends: {
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        width: '45%',
+        borderRadius: 10,
+        margin: 10,
+        padding: Spacing.xSmall,
+        backgroundColor: '#491852',
+        shadowColor: Colors.Primary,
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 10
     }
 })

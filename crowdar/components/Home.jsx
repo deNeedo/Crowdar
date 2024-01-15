@@ -204,7 +204,7 @@ export default function Home({navigation}) {
 						data={friends}
 						renderItem={(friend) => {
 							return (
-								<TouchableOpacity style={Buttons.button} onPress={() => navigation.navigate('Location', {friendName: friend.item, })}>
+								<TouchableOpacity style={Buttons.friends} onPress={() => navigation.navigate('Location', {friendName: friend.item, })}>
 									<Text style = {Buttons.button_text}> {friend.item} </Text>
 								</TouchableOpacity>
 							)

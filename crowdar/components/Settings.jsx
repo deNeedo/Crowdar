@@ -5,6 +5,7 @@ import AuthContext from './AuthContext';
 
 import { Styles } from '../styles/SettingsStyle';
 import { Buttons } from '../styles/ButtonStyle';
+import { BackgroundImage } from 'react-native-elements/dist/config';
 
 export default function NotificationArea({navigation}) {
 
@@ -22,6 +23,11 @@ export default function NotificationArea({navigation}) {
             <TouchableOpacity style={Buttons.button} onPress={() => navigation.navigate('Account')}>
                 <Text style = {Buttons.button_text}> Account Information </Text>
             </TouchableOpacity>
+
+            <TouchableOpacity style = {Buttons.button}>
+                <Text style = {Buttons.button_text}>White mode</Text>
+            </TouchableOpacity>
+
             <TouchableOpacity style={Buttons.button} onPress={signOut}>
                 <Text style = {Buttons.button_text}> LOG OUT </Text>
             </TouchableOpacity>
