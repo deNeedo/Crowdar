@@ -6,6 +6,7 @@ import AuthContext from './AuthContext';
 import { Sizes } from '../constants/Sizes';
 
 export default function Location({route, navigation}) {
+    const { height, width } = Dimensions.get("window");
     const { session, setSession } = useContext(AuthContext);
     const [ location, setLocation] = useState(null);
     const { friendName } = route.params;
@@ -44,14 +45,3 @@ export default function Location({route, navigation}) {
         </View>
     );
 };
-
-const { height, width } = Dimensions.get("window");
-
-const styles = StyleSheet.create({
-container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-},
-});
