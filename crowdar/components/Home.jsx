@@ -8,6 +8,7 @@ import AuthContext from './AuthContext';
 import Geolocation from 'react-native-geolocation-service';
 // styling
 import { Styles } from '../styles/welcomeScreenStyle';
+import { Buttons } from '../styles/ButtonStyle';
 import { Colors } from '../constants/Colors';
 import { Sizes } from '../constants/Sizes';
 import { Spacing } from '../constants/Spacing';
@@ -145,11 +146,11 @@ export default function Home({navigation}) {
 					<Text style={{fontSize: Sizes.Medium, textAlign: "center", marginTop: Spacing.xSmall, marginBottom: Spacing.xLarge, fontFamily: 'Poppins_400Regular'}}> Your ultimate companion for staying connected at big and crowded events! </Text>
 				</View>
 				<View style={{paddingHorizontal: Spacing.xSmall, paddingTop: Spacing.Medium, flexDirection: 'row', alignItems: 'center'}}>
-					<TouchableOpacity onPress={() => navigation.navigate('Login')} style={[Styles.button, {backgroundColor: Colors.Primary}]}>
-						<Text style={[Styles.button_text, {color: Colors.White, fontFamily: 'Poppins_600SemiBold'}]}> Login </Text>
+					<TouchableOpacity onPress={() => navigation.navigate('Login')} style={[Buttons.button, {backgroundColor: Colors.Primary}]}>
+						<Text style={[Buttons.button_text, {color: Colors.White, fontFamily: 'Poppins_600SemiBold'}]}> Login </Text>
 					</TouchableOpacity>
-					<TouchableOpacity onPress={() => navigation.navigate('Registration')} style={[Styles.button, {backgroundColor: Colors.White}]}>
-						<Text style={[Styles.button_text, {color: Colors.Dark, fontFamily: 'Poppins_600SemiBold'}]}> Register </Text>
+					<TouchableOpacity onPress={() => navigation.navigate('Registration')} style={[Buttons.button, {backgroundColor: Colors.White}]}>
+						<Text style={[Buttons.button_text, {color: Colors.Dark, fontFamily: 'Poppins_600SemiBold'}]}> Register </Text>
 					</TouchableOpacity>
 				</View>
 			</SafeAreaView>) : (
@@ -172,8 +173,8 @@ export default function Home({navigation}) {
 						data={users}
 						renderItem={(user) => {
 							return (
-								<TouchableOpacity style={Styles.button} onPress={() => {addFriend(user.item)}}>
-									<Text> {user.item} </Text>
+								<TouchableOpacity style={Buttons.button} onPress={() => {addFriend(user.item)}}>
+									<Text style = {Buttons.button_text}> {user.item} </Text>
 								</TouchableOpacity>
 							)
 						}}
@@ -182,19 +183,19 @@ export default function Home({navigation}) {
 				</View>
 				{/* ##########END OF SEARCH BAR########## */}
 				<View>
-					<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('NotificationArea')}>
-						<Text style = {Styles.text_style}> Notifications </Text>
+					<TouchableOpacity style={Buttons.button} onPress={() => navigation.navigate('NotificationArea')}>
+						<Text style = {Buttons.button_text}> Notifications </Text>
 					</TouchableOpacity>
 				</View>
 				<View>
-					<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Settings')}>
-						<Text style = {Styles.text_style}> Settings </Text>
+					<TouchableOpacity style={Buttons.button} onPress={() => navigation.navigate('Settings')}>
+						<Text style = {Buttons.button_text}> Settings </Text>
 					</TouchableOpacity>
 				</View>
 
 				<View>
-					<TouchableOpacity style={Styles.button} onPress={() => {!locationSharing ? setLocationSharing(true) : setLocationSharing(false)}}>
-						<Text style = {Styles.text_style}> {locationSharing ? 'STOP SHARING LOCATION' : 'START SHARING LOCATION'} </Text>
+					<TouchableOpacity style={Buttons.button} onPress={() => {!locationSharing ? setLocationSharing(true) : setLocationSharing(false)}}>
+						<Text style = {Buttons.button_text}> {locationSharing ? 'STOP SHARING LOCATION' : 'START SHARING LOCATION'} </Text>
 					</TouchableOpacity>
 				</View>
 
@@ -203,8 +204,8 @@ export default function Home({navigation}) {
 						data={friends}
 						renderItem={(friend) => {
 							return (
-								<TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Location', {friendName: friend.item, })}>
-									<Text> {friend.item} </Text>
+								<TouchableOpacity style={Buttons.button} onPress={() => navigation.navigate('Location', {friendName: friend.item, })}>
+									<Text style = {Buttons.button_text}> {friend.item} </Text>
 								</TouchableOpacity>
 							)
 						}}

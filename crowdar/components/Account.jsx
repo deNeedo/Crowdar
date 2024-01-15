@@ -1,9 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { supabase } from '../supabaseClient';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, TouchableOpacity, View, Text, TextInput } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import AuthContext from './AuthContext';
+import { Buttons } from '../styles/ButtonStyle';
+import { Styles } from '../styles/AccountStyle';
 
 
 export default function Account({ navigation}) {
@@ -88,37 +90,27 @@ export default function Account({ navigation}) {
         }
     }
     
-    return (<View style={styles.container}>
-            <View style={[styles.verticallySpaced, styles.mt20]}>
+    return (<View style={Styles.container}>
+            <View style={[Styles.verticallySpaced, Styles.mt20]}>
                 <Input label="Email" value={session?.user?.email} disabled/>
             </View>
-            <View style={styles.verticallySpaced}>
+            <View style={Styles.verticallySpaced}>
                 <Input label="Username" value={username || ''} onChangeText={(text) => setUsername(text)}/>
             </View>
-            <View style={styles.verticallySpaced}>
+            <View style={Styles.verticallySpaced}>
                 <Input label="Website" value={website || ''} onChangeText={(text) => setWebsite(text)}/>
             </View>
 
-            <View style={[styles.verticallySpaced, styles.mt20]}>
-                <Button title={loading ? 'Loading ...' : 'Update'} onPress={() => updateProfile({ username, website, avatar_url: avatarUrl })} disabled={loading}/>
+            <View style={[Styles.verticallySpaced, Styles.mt20]}>
+                <TouchableOpacity onPress={() => updateProfile({ username, website, avatar_url: avatarUrl })} disabled={loading} style={Styles.button}>
+                    <Text style = {Buttons.button_text}>{loading ? 'Loading ...' : 'Update'}</Text>
+                </TouchableOpacity>
             </View>
 
-            <View style={styles.verticallySpaced}>
-                <Button title="Logout" onPress={async () => { await supabase.auth.signOut(); await signOut(); navigation.navigate('Login');}}/>
+            <View style={Styles.verticallySpaced}>
+                <TouchableOpacity onPress={async () => { await supabase.auth.signOut(); await signOut(); navigation.navigate('Login');}} style = {Styles.button}>
+                    <Text style = {Buttons.button_text}>Logout</Text>    
+                </TouchableOpacity>
             </View>
         </View>);
 }
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 40,
-        padding: 12,
-    },
-    verticallySpaced: {
-        paddingTop: 4,
-        paddingBottom: 4,
-        alignSelf: 'stretch',
-    },
-    mt20: {
-        marginTop: 20,
-    },
-});

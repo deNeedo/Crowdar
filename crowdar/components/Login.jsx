@@ -5,6 +5,7 @@ import { Button, Input, colors } from 'react-native-elements';
 import AuthContext from './AuthContext';
 import GoogleAuth from './GoogleAuth';
 
+import {Buttons} from '../styles/ButtonStyle';
 import { Styles } from '../styles/loginScreenStyle';
 import { Colors } from '../constants/Colors';
 import { Sizes } from '../constants/Sizes';
@@ -56,22 +57,11 @@ export default function Login({navigation}) {
                 <View style = {{ 
                     alignItems : 'center',
                 }}>
-                    <Text style = {{ 
-                        fontSize: Sizes.xLarge,
-                        color: Colors.Primary,
-                        fontFamily: 'Poppins_600SemiBold',
-                        marginVertical: Spacing.xSmall,
-                    }}>
+                    <Text style = {[Styles.title,{fontSize: Sizes.xLarge}]}>
                         Login Here
                     </Text>
                     
-                    <Text style = {{ 
-                        fontSize: Sizes.Medium,
-                        color: Colors.Dark,
-                        textAlign: 'center',
-                        maxWidth: '90%',
-                        fontFamily: 'Poppins_600SemiBold',
-                    }}>
+                    <Text style = {[Styles.info_text, {fontSize: Sizes.Medium}]}>
                         Welcome back! You've been missed!
                     </Text>
                 </View>
@@ -124,15 +114,8 @@ export default function Login({navigation}) {
                         },
                         shadowOpacity: 0.3,
                         shadowRadius: 10,
-
                     }}>
-                        <Text style ={{
-                            fontFamily: 'Poppins_600SemiBold',
-                            color: Colors.White,
-                            textTransform: 'uppercase',
-                            textAlign: 'center',
-                            fontSize: Sizes.Medium,
-                        }}>
+                        <Text style ={Buttons.button_text}>
                             Log In
                         </Text>
                     </TouchableOpacity>
@@ -142,9 +125,10 @@ export default function Login({navigation}) {
                     }}>
                         <Text style ={{
                             fontFamily: 'Poppins_600SemiBold',
-                            color: Colors.Dark,
+                            color: '#000980',
                             textAlign: 'center',
                             fontSize: Sizes.Medium,
+                            textDecorationLine: 'underline'
                         }}>
                             Crate new account
                         </Text>

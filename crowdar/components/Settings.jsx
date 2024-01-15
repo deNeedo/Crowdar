@@ -4,6 +4,7 @@ import { supabase } from '../supabaseClient';
 import AuthContext from './AuthContext';
 
 import { Styles } from '../styles/SettingsStyle';
+import { Buttons } from '../styles/ButtonStyle';
 
 export default function NotificationArea({navigation}) {
 
@@ -17,12 +18,12 @@ export default function NotificationArea({navigation}) {
 
     return (
         <View>
-            <Text style = {Styles.main_text}> Settings Panel </Text>
-            <TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Account')}>
-                <Text style = {Styles.text_style}> Account Information </Text>
+            <Text style = {Styles.text_style}> Settings</Text>
+            <TouchableOpacity style={Buttons.button} onPress={() => navigation.navigate('Account')}>
+                <Text style = {Buttons.button_text}> Account Information </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={Styles.button} onPress={signOut}>
-                <Text style = {Styles.text_style}> LOG OUT </Text>
+            <TouchableOpacity style={Buttons.button} onPress={signOut}>
+                <Text style = {Buttons.button_text}> LOG OUT </Text>
             </TouchableOpacity>
         </View>
     )

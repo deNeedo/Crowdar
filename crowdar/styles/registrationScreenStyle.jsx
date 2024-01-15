@@ -10,12 +10,7 @@ export const Styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: -15
     },
-    button_text: {
-        fontSize: 20,
-		textAlign: 'center',
-		textTransform: 'uppercase',
-    },
-
+    
     text_style: {
         fontFamily: 'Poppins_600SemiBold',
         color: Colors.White,

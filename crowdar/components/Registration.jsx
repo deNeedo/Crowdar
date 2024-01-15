@@ -6,6 +6,7 @@ import AuthContext from './AuthContext';
 import GoogleAuth from './GoogleAuth';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import {Buttons} from '../styles/ButtonStyle';
 import { Styles } from '../styles/registrationScreenStyle';
 import { Colors } from '../constants/Colors';
 import { Sizes } from '../constants/Sizes';
@@ -250,7 +251,7 @@ export default function Login({navigation}) {
                         shadowRadius: 10,
 
                     }]}>
-                        <Text style ={Styles.text_style}>
+                        <Text style ={Buttons.button_text}>
                             Register
                         </Text>
                     </TouchableOpacity>
@@ -258,7 +259,7 @@ export default function Login({navigation}) {
                     <TouchableOpacity onPress={() => navigation.navigate('Login')} style = {{
                         padding: Spacing.xSmall,
                     }}>
-                        <Text style ={Styles.text_style}>
+                        <Text style ={Button.button_text}>
                             Already have an account
                         </Text>
                     </TouchableOpacity>

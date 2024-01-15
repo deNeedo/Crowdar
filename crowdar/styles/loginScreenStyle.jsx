@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
-
+import {Colors} from '../constants/Colors';
+import {Spacing} from '../constants/Spacing';
 export const Styles = StyleSheet.create({
     button: {
         paddingVertical: 15,
@@ -8,9 +9,16 @@ export const Styles = StyleSheet.create({
         borderRadius: 10,
         margin: 10,
     },
-    button_text: {
-        fontSize: 24,
-		textAlign: 'center',
-		textTransform: 'uppercase',
+
+    title: {
+        color: Colors.Primary,
+        fontFamily: 'Poppins_600SemiBold',
+        marginVertical: Spacing.xSmall,
+    },
+    info_text: {
+        color: Colors.Dark,
+        textAlign: 'center',
+        maxWidth: '90%',
+        fontFamily: 'Poppins_600SemiBold'
     }
 })

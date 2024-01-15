@@ -6,30 +6,6 @@ import {Spacing} from '../constants/Spacing';
 const { height, width } = Dimensions.get("window");
 
 export const Styles = StyleSheet.create({
-    button: {
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        width: '45%',
-        borderRadius: 10,
-        margin: 10,
-        padding: Spacing.xSmall,
-        backgroundColor: Colors.Primary,
-        marginVertical: Spacing.xSmall,
-        shadowColor: Colors.Primary,
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 10
-    },
-
-    button_text: {
-        fontSize: 20,
-		textAlign: 'center',
-		textTransform: 'uppercase',
-    },
-
     image_background: {
       height: height / 4
     },
@@ -40,9 +16,5 @@ export const Styles = StyleSheet.create({
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: Sizes.Medium,
-    },
-
-    main_buttons: {
-        
     }
 })
