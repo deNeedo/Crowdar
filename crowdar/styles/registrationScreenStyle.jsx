@@ -10,12 +10,18 @@ export const Styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: -15
     },
-    
     text_style: {
         fontFamily: 'Poppins_600SemiBold',
         color: Colors.White,
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: Sizes.Medium,
-    }
+    },
+    redirect: {
+        fontFamily: 'Poppins_600SemiBold',
+        color: '#000980',
+        textAlign: 'center',
+        fontSize: Sizes.Medium,
+        textDecorationLine: 'underline'
+    },
 })

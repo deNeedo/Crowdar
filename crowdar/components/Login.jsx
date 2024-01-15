@@ -51,108 +51,30 @@ export default function Login({navigation}) {
 
     return (
         <SafeAreaView>
-            <View style = {{ 
-                padding: Spacing.xSmall,
-            }}>
-                <View style = {{ 
-                    alignItems : 'center',
-                }}>
-                    <Text style = {[Styles.title,{fontSize: Sizes.xLarge}]}>
-                        Login Here
-                    </Text>
-                    
-                    <Text style = {[Styles.info_text, {fontSize: Sizes.Medium}]}>
-                        Welcome back! You've been missed!
-                    </Text>
+            <View style={{padding: Spacing.xSmall}}>
+                <View style={{alignItems : 'center'}}>
+                    <Text style={[Styles.title,{fontSize: Sizes.xLarge}]}> Login Here </Text>
+                    <Text style={[Styles.info_text, {fontSize: Sizes.Medium}]}> Welcome back! You've been missed! </Text>
                 </View>
-
-                    <View style = {{ 
-                        marginVertical: Spacing.Small,
-                    }}>
-                        <TextInput placeholder='Email' placeholderTextColor={Colors.Dark}  onChangeText={(text) => setEmail(text)} value={email} style = {{ 
-                            fontSize: Sizes.Medium,
-                            color: Colors.Dark,
-                            fontFamily: 'Poppins_400Regular',
-                            padding: '3%',
-                            backgroundColor: Colors.Gray,
-                            borderRadius: 10,
-                            marginVertical: Spacing.xSmall,
-                        }}/>
-                        
-                        <TextInput placeholder='Password' placeholderTextColor={Colors.Dark}  secureTextEntry onChangeText={(text) => setPassword(text)} value={password} style = {{ 
-                            fontSize: Sizes.Medium,
-                            color: Colors.Dark,
-                            fontFamily: 'Poppins_400Regular',
-                            padding: '3%',
-                            backgroundColor: Colors.Gray,
-                            borderRadius: 10,
-                            marginVertical: Spacing.xSmall,
-                        }}/>
+                <View style={{marginVertical: Spacing.Small}}>
+                    <TextInput placeholder='Email' placeholderTextColor={Colors.Dark} onChangeText={(text) => setEmail(text)} value={email} style={Styles.text_input}/>
+                    <TextInput placeholder='Password' placeholderTextColor={Colors.Dark} secureTextEntry onChangeText={(text) => setPassword(text)} value={password} style={Styles.text_input}/>
+                </View>
+                <View>
+                    <Text style={Styles.forgot_pass}>Forgot password? Reset here! </Text>
+                </View>
+                <TouchableOpacity disabled={loading} onPress={() => signInWithEmail()} style = {Styles.login_button}>
+                    <Text style={Buttons.button_text}> Log In </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Registration')} style = {{padding: Spacing.xSmall}}>
+                    <Text style={Styles.redirect}> Create new account </Text>
+                </TouchableOpacity>
+                <View style={{marginVertical: Spacing.xSmall}}>
+                    <Text style={Styles.continue_with}> Or continue with </Text>
+                    <View style={{alignItems: 'center', marginVertical: Spacing.Small}}>
+                        <GoogleAuth/>
                     </View>
-
-                    <View>
-                        <Text style = {{
-                            fontFamily: 'Poppins_600SemiBold',
-                            fontSize: Sizes.Small,
-                            color: Colors.Dark,
-                            alignSelf: 'flex-end'
-                        }}>
-
-                            Forgot password? Reset here!
-                        </Text>
-                    </View>
-
-                    <TouchableOpacity disabled={loading} onPress={() => signInWithEmail()} style = {{
-                        padding: Spacing.xSmall,
-                        backgroundColor: Colors.Primary,
-                        marginVertical: Spacing.Small,
-                        borderRadius: 10,
-                        shadowColor: Colors.Primary,
-                        shadowOffset: {
-                            width: 0,
-                            height: 10,
-                        },
-                        shadowOpacity: 0.3,
-                        shadowRadius: 10,
-                    }}>
-                        <Text style ={Buttons.button_text}>
-                            Log In
-                        </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => navigation.navigate('Registration')} style = {{
-                        padding: Spacing.xSmall,
-                    }}>
-                        <Text style ={{
-                            fontFamily: 'Poppins_600SemiBold',
-                            color: '#000980',
-                            textAlign: 'center',
-                            fontSize: Sizes.Medium,
-                            textDecorationLine: 'underline'
-                        }}>
-                            Crate new account
-                        </Text>
-                    </TouchableOpacity>
-
-                    <View style = {{
-                        marginVertical: Spacing.xSmall,
-                    }}>
-                    <Text style ={{
-                            fontFamily: 'Poppins_600SemiBold',
-                            color: Colors.Primary,
-                            textAlign: 'center',
-                            fontSize: Sizes.xSmall,
-                        }}>
-                            Or continue with
-                        </Text>
-
-                        <View style = {{
-                            alignItems: 'center',
-                            marginVertical: Spacing.Small,
-                        }}>
-                            <GoogleAuth/>
-                        </View>
-                    </View>
+                </View>
             </View>
         </SafeAreaView>
 )}

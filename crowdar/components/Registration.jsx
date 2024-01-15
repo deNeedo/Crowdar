@@ -94,12 +94,8 @@ export default function Login({navigation}) {
     
     return (
         <SafeAreaView>
-            <View style = {{ 
-                padding: Spacing.xSmall,
-            }}>
-                <View style = {{ 
-                    alignItems : 'center',
-                }}>
+            <View style = {{padding: Spacing.xSmall}}>
+                <View style = {{alignItems : 'center'}}>
                     <Text style = {{ 
                         fontSize: Sizes.xLarge,
                         color: Colors.Primary,
@@ -137,7 +133,7 @@ export default function Login({navigation}) {
                                     padding: '3%',
                                     backgroundColor: Colors.Gray,
                                     borderRadius: 10,
-                                    marginVertical: Spacing.xSmall,
+                                    marginVertical: Spacing.xxSmall,
                                 }}/>
                             {checkValidEmail && (
                                 <Text style ={{
@@ -180,7 +176,7 @@ export default function Login({navigation}) {
                                 padding: '3%',
                                 backgroundColor: Colors.Gray,
                                 borderRadius: 10,
-                                marginVertical: Spacing.xSmall,
+                                marginVertical: Spacing.xxSmall,
                         }}/>
                             {passwordError !== "" && (
                             <Text style ={{
@@ -222,7 +218,7 @@ export default function Login({navigation}) {
                                 padding: '3%',
                                 backgroundColor: Colors.Gray,
                                 borderRadius: 10,
-                                marginVertical: Spacing.xSmall,
+                                marginVertical: Spacing.xxSmall,
                             }}/> 
                                 {confirmPasswordError !== "" && (
                                     <Text style={{
@@ -249,19 +245,12 @@ export default function Login({navigation}) {
                         },
                         shadowOpacity: 0.3,
                         shadowRadius: 10,
-
                     }]}>
-                        <Text style ={Buttons.button_text}>
-                            Register
-                        </Text>
+                        <Text style ={Buttons.button_text}> Register </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('Login')} style = {{
-                        padding: Spacing.xSmall,
-                    }}>
-                        <Text style ={Button.button_text}>
-                            Already have an account
-                        </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')} style = {{padding: Spacing.xSmall}}>
+                        <Text style ={Styles.redirect}> Already have an account </Text>
                     </TouchableOpacity>
 
                     <View style = {{
