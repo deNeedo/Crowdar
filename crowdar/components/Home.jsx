@@ -173,7 +173,7 @@ export default function Home({navigation}) {
 						data={users}
 						renderItem={(user) => {
 							return (
-								<TouchableOpacity style={Buttons.button} onPress={() => {addFriend(user.item)}}>
+								<TouchableOpacity style={Buttons.friends} onPress={() => {addFriend(user.item)}}>
 									<Text style = {Buttons.button_text}> {user.item} </Text>
 								</TouchableOpacity>
 							)
