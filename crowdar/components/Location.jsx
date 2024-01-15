@@ -3,6 +3,7 @@ import { supabase } from '../supabaseClient';
 import MapView, { Marker } from 'react-native-maps';
 import { Alert, StyleSheet, View, Text, Button, Dimensions } from 'react-native';
 import AuthContext from './AuthContext';
+import { Sizes } from '../constants/Sizes';
 
 export default function Location({route, navigation}) {
     const { session, setSession } = useContext(AuthContext);
@@ -38,7 +39,7 @@ export default function Location({route, navigation}) {
             {location ?
                 <MapView style={{height: height, width: width}} showsUserLocation={true}>
                     <Marker coordinate={{latitude: location.latitude, longitude: location.longitude}}/>
-                </MapView> : <Text> Friend is not sharing their location! </Text>
+                </MapView> : <Text style = {{color: '#ed09a9', textDecorationLine: 'underline', fontSize: Sizes.xxLarge}}> Friend is not sharing their location! </Text>
             }
         </View>
     );
