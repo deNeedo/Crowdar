@@ -24,9 +24,10 @@ export default function NotificationArea({navigation}) {
                 <Text style = {Buttons.button_text}> Account Information </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style = {Buttons.button}>
+            {/* tego nie robimy w tym release, bo mi sie nie chce */}
+            {/* <TouchableOpacity style = {Buttons.button}>
                 <Text style = {Buttons.button_text}>White mode</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */} 
 
             <TouchableOpacity style={Buttons.button} onPress={signOut}>
                 <Text style = {Buttons.button_text}> LOG OUT </Text>
