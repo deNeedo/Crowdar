@@ -40,7 +40,7 @@ export default function Location({route, navigation}) {
             {location ?
                 <MapView style={{height: height, width: width}} showsUserLocation={true}>
                     <Marker coordinate={{latitude: location.latitude, longitude: location.longitude}}/>
-                </MapView> : <Text style = {{color: '#ed09a9', textDecorationLine: 'underline', fontSize: Sizes.xxLarge}}> Friend is not sharing their location! </Text>
+                </MapView> : <Text style = {{color: '#ed09a9', textDecorationLine: 'underline', fontSize: Sizes.Large}}> Friend is not sharing their location! </Text>
             }
         </View>
     );
