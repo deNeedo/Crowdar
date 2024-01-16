@@ -34,4 +34,5 @@ Crowdar aims to simplify the process of finding friends in crowded environments 
 - Register or log in using your credentials or Google Authentication.
 - Add friends using the build-in searchbar and share your location with them.
 
+
 ---
