@@ -1,6 +1,4 @@
-*node_modules*
-*lock.json*
-*.expo*
-*eas.json
-*android
-*.idea
+node_modules
+.expo
+android
+.idea
