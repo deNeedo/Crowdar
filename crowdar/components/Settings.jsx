@@ -18,7 +18,7 @@ export default function NotificationArea({navigation}) {
     };
 
     return (
-        <View>
+        <View style = {Styles.background}>
             <Text style = {Styles.text_style}> Settings</Text>
             <TouchableOpacity style={Buttons.button} onPress={() => navigation.navigate('Account')}>
                 <Text style = {Buttons.button_text}> Account Information </Text>
@@ -27,7 +27,7 @@ export default function NotificationArea({navigation}) {
             {/* tego nie robimy w tym release, bo mi sie nie chce */}
             {/* <TouchableOpacity style = {Buttons.button}>
                 <Text style = {Buttons.button_text}>White mode</Text>
-            </TouchableOpacity> */} 
+            </TouchableOpacity> */}
 
             <TouchableOpacity style={Buttons.button} onPress={signOut}>
                 <Text style = {Buttons.button_text}> LOG OUT </Text>

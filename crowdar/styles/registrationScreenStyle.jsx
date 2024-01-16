@@ -4,6 +4,12 @@ import {Sizes} from '../constants/Sizes';
 import {Spacing} from '../constants/Spacing';
 
 export const Styles = StyleSheet.create({
+    background: {
+		backgroundColor: '#dee3e0',
+		height: '100%',
+		width: '100%',
+	},
+    
     button: {
         paddingVertical: 15,
         paddingHorizontal: 20,

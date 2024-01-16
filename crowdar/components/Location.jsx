@@ -4,6 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import { Alert, StyleSheet, View, Text, Button, Dimensions } from 'react-native';
 import AuthContext from './AuthContext';
 import { Sizes } from '../constants/Sizes';
+import { Styles } from '../styles/LocationStyle';
 
 export default function Location({route, navigation}) {
     const { height, width } = Dimensions.get("window");
@@ -36,11 +37,11 @@ export default function Location({route, navigation}) {
         }
     };
     return (
-        <View resizeMode='contain'>
+        <View resizeMode='contain' style={Styles.background}>
             {location ?
                 <MapView style={{height: height, width: width}} showsUserLocation={true}>
                     <Marker coordinate={{latitude: location.latitude, longitude: location.longitude}}/>
-                </MapView> : <Text style = {{color: '#ed09a9', textDecorationLine: 'underline', fontSize: Sizes.Large}}> Friend is not sharing their location! </Text>
+                </MapView> : <Text style = {{color: '#ed09a9', textDecorationLine: 'underline', fontSize: Sizes.Large, textAlign: 'center'}}> Friend is not sharing their location! :( </Text>
             }
         </View>
     );

@@ -38,7 +38,7 @@ export const Buttons = StyleSheet.create({
         borderRadius: 10,
         margin: 10,
         padding: Spacing.xSmall,
-        backgroundColor: '#491852',
+        backgroundColor: '#000000',
         shadowColor: Colors.Primary,
         shadowOffset: {
             width: 0,

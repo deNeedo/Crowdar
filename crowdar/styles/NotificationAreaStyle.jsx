@@ -5,9 +5,14 @@ import {Sizes} from '../constants/Sizes';
 export const Styles = StyleSheet.create({
     text_style: {
         fontFamily: 'Poppins_600SemiBold',
-        color: Colors.black,
+        color: Colors.Black,
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: Sizes.xLarge
-    }
+    },
+    background: {
+		backgroundColor: '#dee3e0',
+		height: '100%',
+		width: '100%',
+	},
 })

@@ -29,7 +29,7 @@ export default function App() {
         <AuthProvider>
             <NavigationContainer>
                 <>
-                    <StatusBar hidden={false} barStyle="dark-content" />
+                    <StatusBar hidden={false} barStyle="dark-content" backgroundColor="#dee3e0"/>
                 </>
                 <Stack.Navigator screenOptions={{headerShown: false}}>
                     <Stack.Screen name='Home' component={Home} />
@@ -39,8 +39,6 @@ export default function App() {
                     <Stack.Screen name='NotificationArea' component={NotificationArea} />
                     <Stack.Screen name='Settings' component={Settings} />
                     <Stack.Screen name='Account' component={Account} />
-                    
-                    
                 </Stack.Navigator>
             </NavigationContainer>
         </AuthProvider>

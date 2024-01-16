@@ -9,5 +9,10 @@ export const Styles = StyleSheet.create({
         textTransform: 'uppercase',
         textAlign: 'center',
         fontSize: Sizes.xLarge,
-    }
+    },
+    background: {
+		backgroundColor: '#dee3e0',
+		height: '100%',
+		width: '100%',
+	},
 })

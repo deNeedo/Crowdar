@@ -6,9 +6,15 @@ import {Spacing} from '../constants/Spacing';
 const { height, width } = Dimensions.get("window");
 
 export const Styles = StyleSheet.create({
-    image_background: {
-      height: height / 4
-    },
+	background: {
+		backgroundColor: '#dee3e0',
+		height: '100%',
+		width: '100%',
+	},
+
+   	image_background: {
+		height: height / 4
+	},
 
     text_style: {
         fontFamily: 'Poppins_600SemiBold',

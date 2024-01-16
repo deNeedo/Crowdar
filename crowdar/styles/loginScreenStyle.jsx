@@ -11,6 +11,12 @@ export const Styles = StyleSheet.create({
         margin: 10,
     },
 
+    background: {
+		backgroundColor: '#dee3e0',
+		height: '100%',
+		width: '100%',
+	},
+
     title: {
         color: Colors.Primary,
         fontFamily: 'Poppins_600SemiBold',

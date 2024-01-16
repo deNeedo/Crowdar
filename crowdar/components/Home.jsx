@@ -137,7 +137,7 @@ export default function Home({navigation}) {
 
 	return (
 		!session ? (
-			<SafeAreaView>
+			<SafeAreaView style={Styles.background}>
 				<View>
 					<ImageBackground style={[Styles.image_background, {marginTop: Spacing.Small}]} resizeMode='contain' source={require("../assets/images/welcome_img.png")}/>
 				</View>
@@ -154,7 +154,7 @@ export default function Home({navigation}) {
 					</TouchableOpacity>
 				</View>
 			</SafeAreaView>) : (
-			<SafeAreaView>
+			<SafeAreaView style={Styles.background}>
 				{/* ##########SEARCH BAR########## */}
 				<View style={{
 					marginHorizontal: '5%',
@@ -164,8 +164,8 @@ export default function Home({navigation}) {
 					<TextInput placeholder='Search for friends' clearButtonMode='always' onChangeText={(query) => fetchUsers(query)} style={{
 						paddingHorizontal: 20,
 						paddingVertical: 10,
-						borderColor: '#ccc',
-						borderWidth: 1,
+						borderColor: '#000000',
+						borderWidth: 2,
 						borderRadius: 8,
 					}}></TextInput>
 

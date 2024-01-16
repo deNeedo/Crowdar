@@ -50,7 +50,7 @@ export default function Login({navigation}) {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={Styles.background}>
             <View style={{padding: Spacing.xSmall}}>
                 <View style={{alignItems : 'center'}}>
                     <Text style={[Styles.title,{fontSize: Sizes.xLarge}]}> Login Here </Text>
